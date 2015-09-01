@@ -3,25 +3,30 @@ MANDIR		?= $(PREFIX)/share/man/man1
 
 CC			?= cc
 
-all: clean unzip
+all: bsdunzip.c bsdunzip
 
 clean:
-	rm -f unzip unzip_fixed.c
+	rm -f bsdunzip bsdunzip.c bsdunzip.1
 
-unzip:
-	echo '#define FNM_CASEFOLD 0x10' > unzip_fixed.c
-	echo 'int optreset;' >> unzip_fixed.c
-	cat ./usr.bin/unzip/unzip.c >> unzip_fixed.c
-	$(CC) -larchive $(CFLAGS) $(LDFLAGS) -o unzip unzip_fixed.c
+bsdunzip.c:
+	echo '#define FNM_CASEFOLD 0x10' > bsdunzip.c
+	echo 'int optreset;' >> bsdunzip.c
+	cat ./usr.bin/unzip/unzip.c >> bsdunzip.c
 
-install:
+bsdunzip: bsdunzip.c
+	$(CC) -larchive $(CFLAGS) $(LDFLAGS) -o bsdunzip bsdunzip.c
+
+man:
+	cp ./usr.bin/unzip/unzip.1 bsdunzip.1
+
+install: bsdunzip man
 	mkdir -p $(DESTDIR)$(BINDIR)
-	install unzip $(DESTDIR)$(BINDIR)/unzip
+	install bsdunzip $(DESTDIR)$(BINDIR)/bsdunzip
 	mkdir -p $(DESTDIR)$(MANDIR)
-	install unzip.1 $(DESTDIR)$(MANDIR)/unzip.1
+	install bsdunzip.1 $(DESTDIR)$(MANDIR)/bsdunzip.1
 
 uninstall:
-	rm -f $(DESTDIR)$(BINDIR)/unzip $(DESTDIR)$(MANDIR)/unzip.1
+	rm -f $(DESTDIR)$(BINDIR)/bsdunzip $(DESTDIR)$(MANDIR)/bsdunzip.1
 
 sync:
 	git stash || true

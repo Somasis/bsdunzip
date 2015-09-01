@@ -1,2 +1,3 @@
-unzip
-unzip_fixed.c
+bsdunzip
+bsdunzip.c
+bsdunzip.1
