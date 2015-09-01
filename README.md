@@ -2,7 +2,8 @@
 
 A [BSD-licensed](LICENSE) implementation of unzip(1), utilizing libarchive(1) as
 the backend for interaction with the ZIP format. It is imported from the
-[FreeBSD tree](https://github.com/freebsd/freebsd).
+[FreeBSD tree](https://github.com/freebsd/freebsd), with minor tweaks to make it
+work on Linux (only two lines changed).
 
 It is designed to provide an interface compatible with Info-ZIP's
 [unzip(1)](http://www.info-zip.org/UnZip.html).
