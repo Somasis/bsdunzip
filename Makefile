@@ -14,7 +14,7 @@ bsdunzip.c:
 	cat ./usr.bin/unzip/unzip.c >> bsdunzip.c
 
 bsdunzip: bsdunzip.c
-	$(CC) -larchive $(CFLAGS) $(LDFLAGS) -o bsdunzip bsdunzip.c
+	$(CC) -larchive -std=gnu99 $(CFLAGS) $(LDFLAGS) -o bsdunzip bsdunzip.c
 
 man:
 	cp ./usr.bin/unzip/unzip.1 bsdunzip.1
