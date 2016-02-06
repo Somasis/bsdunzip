@@ -8,6 +8,8 @@ work on Linux (only two lines changed).
 It is designed to provide an interface compatible with Info-ZIP's
 [unzip(1)](http://www.info-zip.org/UnZip.html).
 
+Currently synced with FreeBSD upstream as of [20160115].
+
 ## Requirements
 - [libarchive](https://github.com/libarchive/libarchive)
 
@@ -22,3 +24,5 @@ It is designed to provide an interface compatible with Info-ZIP's
 After installation, you can read the manpage with `man bsdunzip`. A brief
 listing of options and arguments is listed if you run `bsdunzip` with nothing as
 arguments.
+
+[20160115]: https://github.com/freebsd/freebsd/commit/4a483c2c396fcf156e04e080cce09e28143f5073
